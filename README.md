@@ -14,16 +14,55 @@ Utilizando os conhecimentos adquiridos na disciplina de Compiladores, colocálos
 ## Descrição Informal da Linguagem
 Com linguagem semelhante ao SQL, possui os seguintes comandos:
 
-• CREATE [nome_tabela]; </br>
-• SELECT [col_1], [col_2] FROM [nome_tabela]; </br>
-• INSERT INTO us[nome_tabela]ers ([col_1], [col_2]) VALUES ([val_1], [val_2]); </br>
-• UPDATE [nome_tabela] SET [col] = [val] WHERE [col] = [val]; </br>
-• DELETE FROM [nome_tabela] WHERE [col] = [val]; </br>
-• DELETE [nome_tabela]; </br>
-• CLEAR [nome_tabela]; </br>
-• SHOW [nome_tabela]; </br>
-• EXPORT [nome_tabela];
-• EXPORT ALL;
+• Criar tabela:
+```
+CREATE [nome_tabela];
+```
+
+• Selecionar itens:
+```
+SELECT [col_1], [col_2] FROM [nome_tabela];
+```
+
+• Inserir na tabela:
+```
+INSERT INTO us[nome_tabela]ers ([col_1], [col_2]) VALUES ([val_1], [val_2]);
+```
+
+• Atualizar tabela:
+```
+UPDATE [nome_tabela] SET [col] = [val] WHERE [col] = [val];
+```
+
+• Deletar da tabela:
+```
+DELETE FROM [nome_tabela] WHERE [col] = [val];
+```
+
+• Deletar tabela por completo:
+```
+DELETE [nome_tabela];
+```
+
+• Limpar tabela:
+```
+CLEAR [nome_tabela];
+```
+
+• Mostar tabela no terminal:
+```
+SHOW [nome_tabela];
+```
+
+• Exportar tabela específica para arquivo JSON:
+```
+EXPORT [nome_tabela];
+```
+
+• Exportar tonas as tabela em um único arquivo JSON:
+```
+EXPORT ALL;
+```
 
 ## Guia de Como Executar o Compilador
 
