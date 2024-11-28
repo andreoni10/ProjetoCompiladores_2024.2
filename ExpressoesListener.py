@@ -98,6 +98,24 @@ class ExpressoesListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExpressoesParser#exportStmt.
+    def enterExportStmt(self, ctx:ExpressoesParser.ExportStmtContext):
+        pass
+
+    # Exit a parse tree produced by ExpressoesParser#exportStmt.
+    def exitExportStmt(self, ctx:ExpressoesParser.ExportStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by ExpressoesParser#exportAllStmt.
+    def enterExportAllStmt(self, ctx:ExpressoesParser.ExportAllStmtContext):
+        pass
+
+    # Exit a parse tree produced by ExpressoesParser#exportAllStmt.
+    def exitExportAllStmt(self, ctx:ExpressoesParser.ExportAllStmtContext):
+        pass
+
+
     # Enter a parse tree produced by ExpressoesParser#columns.
     def enterColumns(self, ctx:ExpressoesParser.ColumnsContext):
         pass

@@ -8,6 +8,8 @@ UPDATE : 'UPDATE';
 DELETE : 'DELETE';
 CLEAR : 'CLEAR';
 SHOW : 'SHOW';
+EXPORT : 'EXPORT';
+ALL : 'ALL';
 FROM : 'FROM';
 WHERE : 'WHERE';
 SET : 'SET';
@@ -30,7 +32,7 @@ WS : [ \t\r\n]+ -> skip;
 
 // Parser rules
 prog : stmt+ ;
-stmt : createStmt | selectStmt | insertStmt | updateStmt | deleteItemStmt | deleteTableStmt | clearStmt | showStmt;
+stmt : createStmt | selectStmt | insertStmt | updateStmt | deleteItemStmt | deleteTableStmt | clearStmt | showStmt | exportStmt | exportAllStmt;
 
 createStmt : CREATE table PV ;
 selectStmt : SELECT columns FROM table (WHERE condition)? PV ;
@@ -40,6 +42,8 @@ deleteItemStmt : DELETE FROM table (WHERE condition)? PV ;
 deleteTableStmt : DELETE table PV ;
 clearStmt : CLEAR table PV ;
 showStmt : SHOW table PV ;
+exportStmt : EXPORT table PV ;
+exportAllStmt : EXPORT ALL PV ;
 
 columns : ID (COMMA ID)* ;
 values : value (COMMA value)* ;

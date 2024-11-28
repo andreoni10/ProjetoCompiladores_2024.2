@@ -1,3 +1,4 @@
+import json
 import sys
 import pandas as pd
 from antlr4 import *
@@ -23,6 +24,10 @@ def executeStmt(stmt):
         executeClear(stmt.clearStmt())
     elif stmt.showStmt():
         executeShow(stmt.showStmt())
+    elif stmt.exportStmt():
+        executeExport(stmt.exportStmt())
+    elif stmt.exportAllStmt():
+        executeExportAll(stmt.exportAllStmt())
     else:
         raise Exception("Nao identificado")
 
@@ -108,6 +113,28 @@ def executeShow(stmt):
     else:
         raise Exception(f"Tabela {table} nao encontrada")
 
+def executeExport(stmt):
+    table = stmt.table().getText()
+    if table in database:
+        if bool(database):
+            json_dict = json.dumps(database[table], indent=4)
+            with open(f'{table}.json', 'w') as f:
+                f.write(json_dict)
+            print(f"tabela {table} exportado como JSON com sucesso")
+        else:
+            raise Exception(f"Tabela vazia")
+    else:
+        raise Exception(f"Nao exitem dados para exportar")
+
+def executeExportAll(stmt):
+    if bool(database):
+        json_dict = json.dumps(database, indent=4)
+        with open('output.json', 'w') as f:
+            f.write(json_dict)
+        print(f"tabelas exportadas como JSON com sucesso")
+    else:
+        raise Exception(f"Nao exitem dados para exportar")
+
 
 # COMMANDS EXAMPLES:
 # CREATE users;
@@ -118,15 +145,28 @@ def executeShow(stmt):
 # DELETE users;
 # CLEAR users;
 # SHOW users;
+# EXPORT users;
 
 input_text = """
-CREATE users;
-INSERT INTO users (id, name) VALUES (1, 'Neymar');
-INSERT INTO users (id, name) VALUES (2, 'Messi');
-INSERT INTO users (id, name) VALUES (3, 'Cristiano Ronaldo');
-SELECT id, name FROM users;
-SHOW users;
+CREATE futebol;
+INSERT INTO futebol (id, name) VALUES (1, 'Neymar');
+INSERT INTO futebol (id, name) VALUES (2, 'Messi');
+SELECT id, name FROM futebol;
+SHOW futebol;
+
+CREATE basquete;
+INSERT INTO basquete (id, name) VALUES (1, 'Lebron');
+INSERT INTO basquete (id, name) VALUES (2, 'Michael Jordan');
+SELECT id, name FROM basquete;
+SHOW basquete;
+
+EXPORT futebol;
+EXPORT basquete;
+EXPORT ALL;
 """
+# SELECT id, name FROM users;
+# UPDATE users SET name = 'Ronaldinho' WHERE name = 'Messi';
+# SHOW users;
 
 input_stream = InputStream(input_text)
 lexer = ExpressoesLexer(input_stream)
