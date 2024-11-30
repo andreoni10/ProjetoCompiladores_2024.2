@@ -1,13 +1,6 @@
 # ProjetoCompiladores_2024.22
 Projeto da Disciplina Compiladores do período 2024.2
 
-
-## Equipe
-• Bruno Roberto Lima Ramos Rangel </br>
-• Lucas Hernandes Andreoni </br>
-• Nathália Bacalhau </br>
-• Silas Nascimento
-
 ## Motivação
 Utilizando os conhecimentos adquiridos na disciplina de Compiladores, colocálos em prática possibilitando o desenvolvimento de um Banco de Dados em exportar no formato de arquivo JSON.
 
